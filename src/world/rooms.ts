@@ -335,7 +335,10 @@ export function buildRoom(id: PlaceId): Room {
       pick('mail', mb, 'Email me', 'Click to write an email', 5.2);
       labels.push({ text: 'Email', position: new THREE.Vector3(5.2, 3.9, -3.6) });
       // envelope floating over the desk
-      
+      const env = group(box(1.8, 0.08, 1.2, C.white), box(0.6, 0.1, 0.6, C.coral, 0, 0.02, 0.15));
+      env.position.set(0.4, 3.4, -2.6);
+      scene.add(env);
+      bob = env;
       // sofa
       const sofa = new THREE.Group();
       sofa.position.set(-6.6, 0, -0.4);
