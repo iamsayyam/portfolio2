@@ -6,15 +6,15 @@
 export type PlaceId = 'about' | 'projects' | 'skills' | 'contact';
 
 export const site = {
-  name: 'Your Name',
+  name: 'Muhammad Sayyam Sharif',
   role: 'Full-stack developer',
   description:
-    'Portfolio of Your Name, a full-stack developer who builds fast, well-designed web products.',
-  email: 'hello@example.com',
+    'Portfolio of Muhammad Sayyam Sharif, a full-stack developer who builds fast, well-designed web products.',
+  email: 'sayyam.chaudhry1@gmail.com',
   socials: [
-    { label: 'GitHub', href: 'https://github.com/your-username' },
-    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/your-username' },
-    { label: 'X', href: 'https://x.com/your-username' },
+    { label: 'GitHub', href: 'https://github.com/iamsayyam' },
+    { label: 'LinkedIn', href: 'https://pk.linkedin.com/in/muhammad-sayyam-sharif-b8898b364' },
+    { label: 'Instagram', href: 'https://www.instagram.com/sayyam.official' },
   ],
 };
 
