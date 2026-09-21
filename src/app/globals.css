@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background: #b9af92;
+  color: #24211d;
+  font-family: 'Outfit Variable', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+:focus-visible {
+  outline: 2px solid #24211d;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+[data-world] :focus-visible {
+  outline-color: #f2e320;
+  outline-offset: 2px;
+}
+
+/* ---- labels and the "Enter?" bubble that hang over the 3D scene ---- */
+.w-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: 'Outfit Variable', system-ui, sans-serif;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  font-size: 15px;
+  color: #3a352e;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+.w-label--item {
+  letter-spacing: 0.01em;
+  text-transform: none;
+  font-size: 17px;
+  font-weight: 700;
+  color: #2b2823;
+}
+.w-bubble {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: -10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  padding: 7px 18px 8px;
+  background: #efca2b;
+  border: 3px solid #5b5648;
+  border-radius: 4px;
+  color: #24211d;
+  font-family: 'Outfit Variable', system-ui, sans-serif;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  will-change: transform;
+  white-space: nowrap;
+}
+.w-bubble[data-show='true'] {
+  opacity: 1;
+  pointer-events: auto;
+}
+.w-bubble strong {
+  font-size: 19px;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.w-bubble span {
+  font-size: 11px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+/* ---- motion ---- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.rise {
+  animation: rise 0.3s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+@keyframes dot {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+.loading-dot {
+  animation: dot 0.9s ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 1; }
+}
+.splash-star {
+  animation: twinkle 2.8s ease-in-out infinite;
+}
+@keyframes drift {
+  from { transform: translateX(-4%); }
+  to { transform: translateX(6%); }
+}
+.splash-cloud {
+  animation: drift 14s ease-in-out infinite alternate;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise,
+  .loading-dot,
+  .splash-star,
+  .splash-cloud {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .w-label { font-size: 12px; }
+  .w-label--item { font-size: 13px; }
+  .w-bubble { padding: 6px 14px 7px; }
+  .w-bubble strong { font-size: 16px; }
+}
